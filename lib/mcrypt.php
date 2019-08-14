@@ -951,27 +951,12 @@ if (!function_exists('phpseclib_mcrypt_list_algorithms')) {
         // is still accepted.
         $keyLen = strlen($key);
         $sizes = phpseclib_mcrypt_module_get_supported_key_sizes($cipher);
-        if (count($sizes) && !in_array($keyLen, $sizes)) {
-            trigger_error(
-                'mcrypt_' . $op . '(): Key of size ' . $keyLen . ' not supported by this algorithm. Only keys of sizes ' .
-                preg_replace('#, (\d+)$#', ' or $1', implode(', ', $sizes)) . ' supported',
-                E_USER_WARNING
-            );
-            return false;
-        }
         $td = @phpseclib_mcrypt_module_open($cipher, '', $mode, '');
         if ($td === false) {
             trigger_error('mcrypt_encrypt(): Module initialization failed', E_USER_WARNING);
             return false;
         }
         $maxKeySize = phpseclib_mcrypt_enc_get_key_size($td);
-        if (!count($sizes) && $keyLen > $maxKeySize) {
-            trigger_error(
-                'mcrypt_' . $op . '(): Key of size ' . $keyLen . ' not supported by this algorithm. Only keys of size 1 to ' . $maxKeySize . ' supported',
-                E_USER_WARNING
-            );
-            return false;
-        }
         if (phpseclib_mcrypt_module_is_iv_mode($mode)) {
             $iv_size = phpseclib_mcrypt_enc_get_iv_size($td);
             if (!isset($iv) && $iv_size) {
