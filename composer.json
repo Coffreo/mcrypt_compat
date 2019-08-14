@@ -1,5 +1,5 @@
 {
-    "name":         "phpseclib/mcrypt_compat",
+    "name":         "coffreo/mcrypt_compat",
     "description":  "PHP 5.x/7.x polyfill for mcrypt extension",
     "keywords": [
             "mcrypt",
