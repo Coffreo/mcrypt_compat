@@ -651,9 +651,9 @@ if (!function_exists('phpseclib_mcrypt_list_algorithms')) {
             return -3;
         }
         $max_key_size = phpseclib_mcrypt_enc_get_key_size($td);
-        if (strlen($key) > $max_key_size) {
-            trigger_error('mcrypt_generic_init(): Key size too large; supplied length: ' . strlen($key) . ', max: ' . $max_key_size, E_USER_WARNING);
-        }
+        //if (strlen($key) > $max_key_size) {
+        //    trigger_error('mcrypt_generic_init(): Key size too large; supplied length: ' . strlen($key) . ', max: ' . $max_key_size, E_USER_WARNING);
+        //}
         phpseclib_set_key($td, $key);
         phpseclib_set_iv($td, $iv);
 
